@@ -119,12 +119,12 @@ int main()
       for (int i = 0; i < 9; ++i) {
         if (tmp[i] < 4) {
           ++tmp[i];
-          prob[t] += (4 - hand[i]) * nodes2[tmp][t + 1] / (SUM - t);
+          prob[t] += std::max(nodes2[tmp][t + 1] - prob[t + 1], 0.) * (4 - hand[i]);
           --tmp[i];
         }
       }
 
-      prob[t] += (1. - 23.0 / (SUM - t)) * prob[t + 1];
+      prob[t] = prob[t + 1] + prob[t] / (SUM - t);
     }
 
     for (auto& [hand, prob] : nodes2) {
