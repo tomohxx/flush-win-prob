@@ -35,6 +35,9 @@ sqlite3 db.sqlite3 < ../init.sql
 
 ```
 sqlite> select turn, prob from prob where hand = '1122345577889';
+```
+
+```
 0|0.462711
 1|0.434498
 2|0.405372
